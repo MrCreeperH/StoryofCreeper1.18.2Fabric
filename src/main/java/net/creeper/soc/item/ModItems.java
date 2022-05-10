@@ -31,12 +31,21 @@ public class ModItems {
     public static final Item MUTANT_CREEPER_SPAWN_EGG = registerItem("mutant_creeper_spawn_egg",
             new SpawnEggItem(ModEntities.MUTANT_CREEPER,0x1A8D2C, 0x067017,
                     new FabricItemSettings().group(ModItemGroup.STORYOFCREEPER).maxCount(64)));
+
+    public static final Item MOTHER_CREEPER_SPAWN_EGG = registerItem("mutant_creeper_spawn_egg",
+            new SpawnEggItem(ModEntities.MOTHER_CREEPER,0x6AEE74, 0x367A3B,
+                    new FabricItemSettings().group(ModItemGroup.STORYOFCREEPER).maxCount(64)));
+
+    public static final Item BABY_CREEPER_SPAWN_EGG = registerItem("mutant_creeper_spawn_egg",
+            new SpawnEggItem(ModEntities.BABY_CREEPER,0x61F26F, 0x4EC259,
+                    new FabricItemSettings().group(ModItemGroup.STORYOFCREEPER).maxCount(64)));
+
     /////Материалы для брони
     public static final Item CREEPERITE_INGOT = registerItem("creeperite_ingot",
-            new Item(new FabricItemSettings().group(ModItemGroup.STORYOFCREEPER).maxCount(64).rarity(Rarity.EPIC).fireproof()));
+            new Item(new FabricItemSettings().group(ModItemGroup.STORYOFCREEPER).maxCount(64).fireproof()));
 
     public static final Item CREEPERITE_RAW = registerItem("creeperite_raw",
-            new Item(new FabricItemSettings().group(ModItemGroup.STORYOFCREEPER).maxCount(64).rarity(Rarity.RARE)));
+            new Item(new FabricItemSettings().group(ModItemGroup.STORYOFCREEPER).maxCount(64)));
 
 
     /////Вещи из криперита
@@ -75,7 +84,7 @@ public class ModItems {
 
     public static final Item MORGEN_MUSIC_DISK = registerItem("morgen_music_disk",
             new ModMusicDiscItem(7, ModSounds.MORGEN_MUSIC,
-                    new FabricItemSettings().group(ModItemGroup.NEWSECRETTHINGS).maxCount(1).rarity(Rarity.EPIC).fireproof()));
+                    new FabricItemSettings().group(ModItemGroup.NEWSECRETTHINGS).maxCount(1).rarity(Rarity.RARE).fireproof()));
 
 
 

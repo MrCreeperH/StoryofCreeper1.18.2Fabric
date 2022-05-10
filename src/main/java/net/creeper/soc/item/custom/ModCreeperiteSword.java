@@ -14,7 +14,7 @@ public class ModCreeperiteSword extends SwordItem {
     }
     @Override
     public boolean postHit(ItemStack stack, LivingEntity target, LivingEntity attacker) {
-        attacker.addStatusEffect(new StatusEffectInstance(StatusEffects.REGENERATION, 75, 2), attacker);
+        attacker.addStatusEffect(new StatusEffectInstance(StatusEffects.INSTANT_HEALTH, 1, 4), attacker);
         return super.postHit(stack, target, attacker);
     }
 }

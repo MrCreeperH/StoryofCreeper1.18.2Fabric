@@ -80,7 +80,7 @@ public class MotherCreeperEntity extends ZombieEntity implements IAnimatable {
     }
 
     protected void initCustomGoals() {
-        this.goalSelector.add(2, new ZombieAttackGoal(this, 1.0D, false));
+        this.goalSelector.add(2, new ZombieAttackGoal(this, 2.0D, false));
         this.goalSelector.add(6, new MoveThroughVillageGoal(this, 1.0D, true, 4, this::canBreakDoors));
         this.goalSelector.add(7, new WanderAroundFarGoal(this, 1.0D));
         this.targetSelector.add(1, (new RevengeGoal(this, new Class[0])).setGroupRevenge(new Class[]{ZombifiedPiglinEntity.class}));

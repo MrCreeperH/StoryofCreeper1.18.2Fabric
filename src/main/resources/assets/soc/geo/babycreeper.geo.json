@@ -1,0 +1,65 @@
+{
+	"format_version": "1.12.0",
+	"minecraft:geometry": [
+		{
+			"description": {
+				"identifier": "geometry.geometry.creeper",
+				"texture_width": 64,
+				"texture_height": 32,
+				"visible_bounds_width": 2,
+				"visible_bounds_height": 2.5,
+				"visible_bounds_offset": [0, 0.75, 0]
+			},
+			"bones": [
+				{
+					"name": "body",
+					"pivot": [0.25, 6, -0.775],
+					"mirror": true,
+					"cubes": [
+						{"origin": [-1.75, 3, -1.775], "size": [4, 6, 2], "uv": [22, 20]}
+					]
+				},
+				{
+					"name": "head",
+					"pivot": [0, 18, 0],
+					"mirror": true,
+					"cubes": [
+						{"origin": [-1.75, 9, -2.775], "size": [4, 4, 4], "uv": [21, 23]}
+					]
+				},
+				{
+					"name": "leg0",
+					"pivot": [2, 6, 4],
+					"mirror": true,
+					"cubes": [
+						{"origin": [0.25, 0, 0.225], "size": [2, 3, 2], "uv": [3, 21]}
+					]
+				},
+				{
+					"name": "leg1",
+					"pivot": [-0.75, 1.5, 1.225],
+					"mirror": true,
+					"cubes": [
+						{"origin": [-1.75, 0, 0.225], "size": [2, 3, 2], "uv": [2, 21]}
+					]
+				},
+				{
+					"name": "leg2",
+					"pivot": [1.25, 1.5, -2.775],
+					"mirror": true,
+					"cubes": [
+						{"origin": [0.25, 0, -3.775], "size": [2, 3, 2], "uv": [3, 21]}
+					]
+				},
+				{
+					"name": "leg3",
+					"pivot": [-0.75, 1.79539, -3.59914],
+					"mirror": true,
+					"cubes": [
+						{"origin": [-1.75, -0.03717, -3.67831], "size": [2, 3, 2], "uv": [3, 21]}
+					]
+				}
+			]
+		}
+	]
+}

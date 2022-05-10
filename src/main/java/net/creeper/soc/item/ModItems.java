@@ -32,11 +32,11 @@ public class ModItems {
             new SpawnEggItem(ModEntities.MUTANT_CREEPER,0x1A8D2C, 0x067017,
                     new FabricItemSettings().group(ModItemGroup.STORYOFCREEPER).maxCount(64)));
 
-    public static final Item MOTHER_CREEPER_SPAWN_EGG = registerItem("mutant_creeper_spawn_egg",
+    public static final Item MOTHER_CREEPER_SPAWN_EGG = registerItem("mother_creeper_spawn_egg",
             new SpawnEggItem(ModEntities.MOTHER_CREEPER,0x6AEE74, 0x367A3B,
                     new FabricItemSettings().group(ModItemGroup.STORYOFCREEPER).maxCount(64)));
 
-    public static final Item BABY_CREEPER_SPAWN_EGG = registerItem("mutant_creeper_spawn_egg",
+    public static final Item BABY_CREEPER_SPAWN_EGG = registerItem("baby_creeper_spawn_egg",
             new SpawnEggItem(ModEntities.BABY_CREEPER,0x61F26F, 0x4EC259,
                     new FabricItemSettings().group(ModItemGroup.STORYOFCREEPER).maxCount(64)));
 

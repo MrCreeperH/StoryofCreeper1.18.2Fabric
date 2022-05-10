@@ -1,0 +1,10 @@
+{
+  "morgen_music": {
+    "sounds": [
+      {
+        "name": "soc:morgen_music",
+        "stream": true
+      }
+    ]
+  }
+}

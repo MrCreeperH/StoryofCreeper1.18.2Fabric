@@ -1,0 +1,31 @@
+{
+  "display": {
+    "icon": {
+      "item": "soc:unknown_shard"
+    },
+    "title": {
+      "translate": "advancements.soc.mine_shard_title"
+    },
+    "description": {
+      "translate": "advancements.soc.mine_shard_description"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "background": "soc:textures/block/shard_ore.png"
+  },
+  "criteria": {
+    "requirement": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "soc:unknown_shard"
+            ]
+          }
+        ]
+      }
+    }
+  }
+}

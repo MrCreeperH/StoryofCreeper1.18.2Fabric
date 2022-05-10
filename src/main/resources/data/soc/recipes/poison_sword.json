@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "#s#",
+    " # ",
+    " n "
+  ],
+  "key": {
+    "#": {
+      "item": "soc:unknown_shard"
+    },
+    "n": {
+      "item": "minecraft:netherite_ingot"
+    },
+    "s": {
+      "item": "soc:scepter_shard"
+    }
+  },
+  "result": {
+    "item": "soc:poison_sword",
+    "count": 1
+  }
+}

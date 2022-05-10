@@ -1,0 +1,32 @@
+{
+  "display": {
+    "icon": {
+      "item": "soc:scepter_shard"
+    },
+    "title": {
+      "translate": "advancements.soc.craft_scepter_title"
+    },
+    "description": {
+      "translate": "advancements.soc.craft_scepter_description"
+  },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "background": "soc:textures/block/shard_ore.png"
+  },
+  "parent": "soc:mine_shard",
+  "criteria": {
+    "requirement": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "soc:scepter_shard"
+            ]
+          }
+        ]
+      }
+    }
+  }
+}

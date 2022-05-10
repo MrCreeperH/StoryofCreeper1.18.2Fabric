@@ -1,0 +1,8 @@
+{
+  "replace": false,
+  "values": [
+    "soc:shard_ore",
+    "soc:shard_block",
+    "soc:creeperite_ore"
+  ]
+}

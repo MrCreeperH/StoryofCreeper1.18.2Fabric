@@ -1,0 +1,33 @@
+{
+  "display": {
+    "icon": {
+      "item": "soc:what"
+    },
+    "title": {
+      "translate": "advancements.soc.craft_what_title"
+    },
+    "description": {
+      "translate": "advancements.soc.craft_what_description"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true
+  },
+  "parent": "soc:craft_poison_sword",
+  "parent": "soc:craft_scepter",
+  "parent": "soc:mine_shard",
+  "criteria": {
+    "requirement": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "soc:what"
+            ]
+          }
+        ]
+      }
+    }
+  }
+}

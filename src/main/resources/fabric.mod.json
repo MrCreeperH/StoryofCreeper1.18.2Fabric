@@ -1,0 +1,41 @@
+{
+  "schemaVersion": 1,
+  "id": "soc",
+  "version": "${1.0}",
+
+  "name": "StoryOfCreepers",
+  "description": "This mod tells about creepers INVENTED by the AUTHOR, the whole story is made up",
+  "authors": [
+    "MrCreeperH, hanter173, QueasyRacer4007"
+  ],
+  "contact": {
+    "homepage": "https://fabricmc.net/",
+    "sources": "https://github.com/FabricMC/fabric-example-mod"
+  },
+
+  "license": "MIT",
+  "icon": "assets/modid/icon.png",
+
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "net.creeper.soc.StoryOfCreeper"
+    ],
+    "client": [
+      "net.creeper.soc.StoryOfCreeperClientMod"
+    ]
+  },
+  "mixins": [
+    "soc.mixins.json"
+  ],
+
+  "depends": {
+    "fabricloader": ">=0.13.3",
+    "fabric": "*",
+    "minecraft": "~1.18.2",
+    "java": ">=17"
+  },
+  "suggests": {
+    "another-mod": "*"
+  }
+}

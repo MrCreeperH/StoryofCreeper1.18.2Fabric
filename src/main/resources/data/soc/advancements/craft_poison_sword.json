@@ -1,0 +1,31 @@
+{
+  "display": {
+    "icon": {
+      "item": "soc:poison_sword"
+    },
+    "title": {
+      "translate": "advancements.soc.craft_poison_sword_title"
+    },
+    "description": {
+      "translate": "advancements.soc.craft_poison_sword_description"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true
+  },
+  "parent": "soc:craft_scepter",
+  "criteria": {
+    "requirement": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "soc:poison_sword"
+            ]
+          }
+        ]
+      }
+    }
+  }
+}

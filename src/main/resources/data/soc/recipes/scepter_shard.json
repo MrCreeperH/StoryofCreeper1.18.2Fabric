@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "b#b",
+    " n ",
+    " n "
+  ],
+  "key": {
+    "#": {
+      "item": "soc:unknown_shard"
+    },
+    "n": {
+      "item": "minecraft:netherite_ingot"
+    },
+    "b": {
+      "item": "soc:shard_block"
+    }
+  },
+  "result": {
+    "item": "soc:scepter_shard",
+    "count": 1
+  }
+}

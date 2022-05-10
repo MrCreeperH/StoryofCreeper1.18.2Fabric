@@ -1,0 +1,5 @@
+{
+  "variants": {
+    "": { "model": "soc:block/shard_ore" }
+  }
+}

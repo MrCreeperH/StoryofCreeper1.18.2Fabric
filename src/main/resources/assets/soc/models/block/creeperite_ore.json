@@ -1,0 +1,6 @@
+{
+  "parent": "block/cube_all",
+  "textures": {
+    "all": "soc:block/creeperite_ore"
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:blasting",
+  "ingredient": [
+    {
+      "item": "soc:creeperite_raw"
+    }
+  ],
+  "result": "soc:creeperite_ingot",
+  "experience": 2,
+  "cookingtime": 280
+}

@@ -6,11 +6,11 @@
   "name": "StoryOfCreepers",
   "description": "This mod tells about creepers INVENTED by the AUTHOR, the whole story is made up",
   "authors": [
-    "MrCreeperH, hanter173, QueasyRacer4007"
+    "MrCreeperH, hanter173, QueasyRacer4007, 1Stabbs1"
   ],
   "contact": {
-    "homepage": "https://fabricmc.net/",
-    "sources": "https://github.com/FabricMC/fabric-example-mod"
+    "homepage": "https://discord.gg/v7exjtYDhC",
+    "sources": "https://github.com/MrCreeperH/StoryofCreeper1.18.2Fabric"
   },
 
   "license": "MIT",

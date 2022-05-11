@@ -9,12 +9,15 @@ import net.creeper.soc.item.custom.ModPoisoningSwordItem;
 import net.creeper.soc.sound.ModSounds;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.minecraft.entity.EquipmentSlot;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.*;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.Rarity;
 import net.minecraft.util.registry.Registry;
+import net.minecraft.world.World;
 
 public class ModItems {
+
     /////Вещи из шарда
     public static final Item UNKNOWSHARD = registerItem("unknown_shard",
             new Item(new FabricItemSettings().group(ModItemGroup.STORYOFCREEPER).maxCount(12))); //Создание предмета
@@ -24,7 +27,7 @@ public class ModItems {
                     new FabricItemSettings().group(ModItemGroup.STORYOFCREEPER)));
 
     public static final Item POISON_SWORD = registerItem("poison_sword",
-            new ModPoisoningSwordItem(ModToolMaterials.POISON_SWORD, 8, 1.3f,
+            new ModPoisoningSwordItem(ModToolMaterials.POISON_SWORD, 8, -2.3f,
                     new FabricItemSettings().group(ModItemGroup.STORYOFCREEPER).maxCount(1)));
 
     /////Яйца призыва
@@ -71,7 +74,7 @@ public class ModItems {
 
     /////Предметы
     public static final Item CREEPERITE_SWORD = registerItem("creeperite_sword",
-            new ModCreeperiteSword(ModToolMaterials.CREEPERITE_SWORD, 9, 1.8f,
+            new ModCreeperiteSword(ModToolMaterials.CREEPERITE_SWORD, 9, -2.8f,
                     new FabricItemSettings().group(ModItemGroup.STORYOFCREEPER)));
     /////Еда
     public static final Item CREEPERITE_APPLE = registerItem("creeperite_apple",

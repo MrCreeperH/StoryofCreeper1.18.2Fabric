@@ -10,8 +10,8 @@ import java.util.function.Supplier;
 public enum ModToolMaterials implements ToolMaterial {
     SCEPTER(MiningLevels.NETHERITE, 20, 10.0f, 1f, 30, () -> Ingredient.ofItems(ModItems.UNKNOWSHARD)),
     WHAT(MiningLevels.NETHERITE, 99999, 50f, 1f, 30, () -> Ingredient.ofItems(ModItems.WHAT)),
-    POISON_SWORD(MiningLevels.HAND, 250, 2f,1f, 30, () -> Ingredient.ofItems(ModItems.POISON_SWORD)),
-    CREEPERITE_SWORD(MiningLevels.HAND, 110, 3, 1f, 30, () -> Ingredient.ofItems(ModItems.CREEPERITE_SWORD));
+    POISON_SWORD(MiningLevels.HAND, 250, 1f,1f, 30, () -> Ingredient.ofItems(ModItems.POISON_SWORD, ModItems.UNKNOWSHARD)),
+    CREEPERITE_SWORD(MiningLevels.HAND, 110, 1f, 1f, 30, () -> Ingredient.ofItems(ModItems.CREEPERITE_SWORD, ModItems.CREEPERITE_INGOT));
 
 
     private final int miningLevel;

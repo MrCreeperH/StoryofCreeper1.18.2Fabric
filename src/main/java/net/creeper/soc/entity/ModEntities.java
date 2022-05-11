@@ -25,5 +25,5 @@ public class ModEntities {
     public static final EntityType<BabyCreeperEntity> BABY_CREEPER = Registry.register(
             Registry.ENTITY_TYPE, new Identifier(StoryOfCreeper.MOD_ID, "babycreeper"),
                     FabricEntityTypeBuilder.create(SpawnGroup.MONSTER, BabyCreeperEntity::new)
-                            .dimensions(EntityDimensions.fixed(0.45f, 1f)).build());
+                            .dimensions(EntityDimensions.fixed(0.45f, 0.90f)).build());
 }

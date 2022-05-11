@@ -11,7 +11,6 @@ public class BabyCreeperRenderer extends GeoEntityRenderer<BabyCreeperEntity> {
     public BabyCreeperRenderer(EntityRendererFactory.Context ctx) {
         super(ctx, new BabyCreeperModel());
     }
-
     @Override
     public Identifier getTextureLocation(BabyCreeperEntity instance) {
         return new Identifier(StoryOfCreeper.MOD_ID, "textures/entity/babycreeper/babycreepertexture.png");

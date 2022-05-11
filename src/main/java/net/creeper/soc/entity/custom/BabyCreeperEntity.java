@@ -50,7 +50,7 @@ public class BabyCreeperEntity extends CreeperEntity implements IAnimatable {
     private static final TrackedData<Boolean> IGNITED;
     private int lastFuseTime;
     private int currentFuseTime;
-    private int fuseTime = 15;
+    private int fuseTime = 10;
     private int explosionRadius = 1;
     private int headsDropped;
 

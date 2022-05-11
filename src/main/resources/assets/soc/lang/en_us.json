@@ -34,5 +34,7 @@
   "item.soc.morgen_music_disk.desc": "MORGENSHTERN - CADDICKLAC",
   "item.soc.creeperite_apple": "Creeperite Apple",
   "item.soc.creeperite_apple.desc": "Creeperite Apple is pretty solid to eat it, but if you try, then...",
-  "item.soc.creeperite_raw": "Creeperite Raw"
+  "item.soc.creeperite_raw": "Creeperite Raw",
+  "entity.soc.babycreeper": "Baby Creeper",
+  "item.soc.mutant_creeper_spawn_egg": "Baby Creeper Summoning Egg"
 }

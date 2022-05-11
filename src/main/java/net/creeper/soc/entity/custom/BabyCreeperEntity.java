@@ -75,7 +75,7 @@ public class BabyCreeperEntity extends CreeperEntity implements IAnimatable {
     public static DefaultAttributeContainer.Builder setAttributes() {
         return HostileEntity.createHostileAttributes()
                 .add(EntityAttributes.GENERIC_MOVEMENT_SPEED, 0.35D)
-                .add(EntityAttributes.GENERIC_MAX_HEALTH, 30D);
+                .add(EntityAttributes.GENERIC_MAX_HEALTH, 10D);
     }
 
     public int getSafeFallDistance() {

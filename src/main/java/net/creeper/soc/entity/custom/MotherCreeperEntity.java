@@ -67,6 +67,8 @@ public class MotherCreeperEntity extends ZombieEntity implements IAnimatable {
     private int inWaterTime;
     private int ticksUntilWaterConversion;
 
+    private AnimationFactory factory = new AnimationFactory(this);
+
     public MotherCreeperEntity(EntityType<? extends ZombieEntity> entityType, World world) {
         super(entityType, world);
         this.breakDoorsGoal = new BreakDoorGoal(this, DOOR_BREAK_DIFFICULTY_CHECKER);
@@ -102,7 +104,7 @@ public class MotherCreeperEntity extends ZombieEntity implements IAnimatable {
     }
 
     public boolean isConvertingInWater() {
-        return (Boolean)this.getDataTracker().get(CONVERTING_IN_WATER);
+        return (Boolean) this.getDataTracker().get(CONVERTING_IN_WATER);
     }
 
     public boolean canBreakDoors() {
@@ -113,7 +115,7 @@ public class MotherCreeperEntity extends ZombieEntity implements IAnimatable {
         if (this.shouldBreakDoors() && NavigationConditions.hasMobNavigation(this)) {
             if (this.canBreakDoors != canBreakDoors) {
                 this.canBreakDoors = canBreakDoors;
-                ((MobNavigation)this.getNavigation()).setCanPathThroughDoors(canBreakDoors);
+                ((MobNavigation) this.getNavigation()).setCanPathThroughDoors(canBreakDoors);
                 if (canBreakDoors) {
                     this.goalSelector.add(1, this.breakDoorsGoal);
                 } else {
@@ -132,12 +134,12 @@ public class MotherCreeperEntity extends ZombieEntity implements IAnimatable {
     }
 
     public boolean isBaby() {
-        return (Boolean)this.getDataTracker().get(BABY);
+        return (Boolean) this.getDataTracker().get(BABY);
     }
 
     protected int getXpToDrop(PlayerEntity player) {
         if (this.isBaby()) {
-            this.experiencePoints = (int)((double)this.experiencePoints * 2.5D);
+            this.experiencePoints = (int) ((double) this.experiencePoints * 2.5D);
         }
 
         return super.getXpToDrop(player);
@@ -223,13 +225,13 @@ public class MotherCreeperEntity extends ZombieEntity implements IAnimatable {
     protected void convertInWater() {
         this.convertTo(EntityType.DROWNED);
         if (!this.isSilent()) {
-            this.world.syncWorldEvent((PlayerEntity)null, 1040, this.getBlockPos(), 0);
+            this.world.syncWorldEvent((PlayerEntity) null, 1040, this.getBlockPos(), 0);
         }
 
     }
 
     protected void convertTo(EntityType<? extends ZombieEntity> entityType) {
-        MotherCreeperEntity zombieEntity = (MotherCreeperEntity)this.convertTo(entityType, true);
+        MotherCreeperEntity zombieEntity = (MotherCreeperEntity) this.convertTo(entityType, true);
         if (zombieEntity != null) {
             zombieEntity.applyAttributeModifiers(zombieEntity.world.getLocalDifficulty(zombieEntity.getBlockPos()).getClampedLocalDifficulty());
             zombieEntity.setCanBreakDoors(zombieEntity.shouldBreakDoors() && this.canBreakDoors());
@@ -247,19 +249,19 @@ public class MotherCreeperEntity extends ZombieEntity implements IAnimatable {
         } else if (!(this.world instanceof ServerWorld)) {
             return false;
         } else {
-            ServerWorld serverWorld = (ServerWorld)this.world;
+            ServerWorld serverWorld = (ServerWorld) this.world;
             LivingEntity livingEntity = this.getTarget();
             if (livingEntity == null && source.getAttacker() instanceof LivingEntity) {
-                livingEntity = (LivingEntity)source.getAttacker();
+                livingEntity = (LivingEntity) source.getAttacker();
             }
 
-            if (livingEntity != null && this.world.getDifficulty() == Difficulty.HARD && (double)this.random.nextFloat() < this.getAttributeValue(EntityAttributes.ZOMBIE_SPAWN_REINFORCEMENTS) && this.world.getGameRules().getBoolean(GameRules.DO_MOB_SPAWNING)) {
+            if (livingEntity != null && this.world.getDifficulty() == Difficulty.HARD && (double) this.random.nextFloat() < this.getAttributeValue(EntityAttributes.ZOMBIE_SPAWN_REINFORCEMENTS) && this.world.getGameRules().getBoolean(GameRules.DO_MOB_SPAWNING)) {
                 int i = MathHelper.floor(this.getX());
                 int j = MathHelper.floor(this.getY());
                 int k = MathHelper.floor(this.getZ());
                 ZombieEntity zombieEntity = new ZombieEntity(this.world);
 
-                for(int l = 0; l < 50; ++l) {
+                for (int l = 0; l < 50; ++l) {
                     int m = i + MathHelper.nextInt(this.random, 7, 40) * MathHelper.nextInt(this.random, -1, 1);
                     int n = j + MathHelper.nextInt(this.random, 7, 40) * MathHelper.nextInt(this.random, -1, 1);
                     int o = k + MathHelper.nextInt(this.random, 7, 40) * MathHelper.nextInt(this.random, -1, 1);
@@ -267,10 +269,10 @@ public class MotherCreeperEntity extends ZombieEntity implements IAnimatable {
                     EntityType<?> entityType = zombieEntity.getType();
                     SpawnRestriction.Location location = SpawnRestriction.getLocation(entityType);
                     if (SpawnHelper.canSpawn(location, this.world, blockPos, entityType) && SpawnRestriction.canSpawn(entityType, serverWorld, SpawnReason.REINFORCEMENT, blockPos, this.world.random)) {
-                        zombieEntity.setPosition((double)m, (double)n, (double)o);
-                        if (!this.world.isPlayerInRange((double)m, (double)n, (double)o, 7.0D) && this.world.doesNotIntersectEntities(zombieEntity) && this.world.isSpaceEmpty(zombieEntity) && !this.world.containsFluid(zombieEntity.getBoundingBox())) {
+                        zombieEntity.setPosition((double) m, (double) n, (double) o);
+                        if (!this.world.isPlayerInRange((double) m, (double) n, (double) o, 7.0D) && this.world.doesNotIntersectEntities(zombieEntity) && this.world.isSpaceEmpty(zombieEntity) && !this.world.containsFluid(zombieEntity.getBoundingBox())) {
                             zombieEntity.setTarget(livingEntity);
-                            zombieEntity.initialize(serverWorld, this.world.getLocalDifficulty(zombieEntity.getBlockPos()), SpawnReason.REINFORCEMENT, (EntityData)null, (NbtCompound)null);
+                            zombieEntity.initialize(serverWorld, this.world.getLocalDifficulty(zombieEntity.getBlockPos()), SpawnReason.REINFORCEMENT, (EntityData) null, (NbtCompound) null);
                             serverWorld.spawnEntityAndPassengers(zombieEntity);
                             this.getAttributeInstance(EntityAttributes.ZOMBIE_SPAWN_REINFORCEMENTS).addPersistentModifier(new EntityAttributeModifier("Zombie reinforcement caller charge", -0.05000000074505806D, EntityAttributeModifier.Operation.ADDITION));
                             zombieEntity.getAttributeInstance(EntityAttributes.ZOMBIE_SPAWN_REINFORCEMENTS).addPersistentModifier(new EntityAttributeModifier("Zombie reinforcement callee charge", -0.05000000074505806D, EntityAttributeModifier.Operation.ADDITION));
@@ -289,7 +291,7 @@ public class MotherCreeperEntity extends ZombieEntity implements IAnimatable {
         if (bl) {
             float f = this.world.getLocalDifficulty(this.getBlockPos()).getLocalDifficulty();
             if (this.getMainHandStack().isEmpty() && this.isOnFire() && this.random.nextFloat() < f * 0.3F) {
-                target.setOnFireFor(2 * (int)f);
+                target.setOnFireFor(2 * (int) f);
             }
         }
 
@@ -359,15 +361,15 @@ public class MotherCreeperEntity extends ZombieEntity implements IAnimatable {
                 return;
             }
 
-            VillagerEntity villagerEntity = (VillagerEntity)other;
-            ZombieVillagerEntity zombieVillagerEntity = (ZombieVillagerEntity)villagerEntity.convertTo(EntityType.ZOMBIE_VILLAGER, false);
-            zombieVillagerEntity.initialize(world, world.getLocalDifficulty(zombieVillagerEntity.getBlockPos()), SpawnReason.CONVERSION, new ZombieEntity.ZombieData(false, true), (NbtCompound)null);
+            VillagerEntity villagerEntity = (VillagerEntity) other;
+            ZombieVillagerEntity zombieVillagerEntity = (ZombieVillagerEntity) villagerEntity.convertTo(EntityType.ZOMBIE_VILLAGER, false);
+            zombieVillagerEntity.initialize(world, world.getLocalDifficulty(zombieVillagerEntity.getBlockPos()), SpawnReason.CONVERSION, new ZombieEntity.ZombieData(false, true), (NbtCompound) null);
             zombieVillagerEntity.setVillagerData(villagerEntity.getVillagerData());
-            zombieVillagerEntity.setGossipData((NbtElement)villagerEntity.getGossip().serialize(NbtOps.INSTANCE).getValue());
+            zombieVillagerEntity.setGossipData((NbtElement) villagerEntity.getGossip().serialize(NbtOps.INSTANCE).getValue());
             zombieVillagerEntity.setOfferData(villagerEntity.getOffers().toNbt());
             zombieVillagerEntity.setXp(villagerEntity.getExperience());
             if (!this.isSilent()) {
-                world.syncWorldEvent((PlayerEntity)null, 1026, this.getBlockPos(), 0);
+                world.syncWorldEvent((PlayerEntity) null, 1026, this.getBlockPos(), 0);
             }
         }
 
@@ -395,21 +397,21 @@ public class MotherCreeperEntity extends ZombieEntity implements IAnimatable {
         }
 
         if (entityData instanceof ZombieEntity.ZombieData) {
-            ZombieEntity.ZombieData zombieData = (ZombieEntity.ZombieData)entityData;
+            ZombieEntity.ZombieData zombieData = (ZombieEntity.ZombieData) entityData;
             if (zombieData.baby) {
                 this.setBaby(true);
                 if (zombieData.tryChickenJockey) {
-                    if ((double)world.getRandom().nextFloat() < 0.05D) {
+                    if ((double) world.getRandom().nextFloat() < 0.05D) {
                         List<ChickenEntity> list = world.getEntitiesByClass(ChickenEntity.class, this.getBoundingBox().expand(5.0D, 3.0D, 5.0D), EntityPredicates.NOT_MOUNTED);
                         if (!list.isEmpty()) {
-                            ChickenEntity chickenEntity = (ChickenEntity)list.get(0);
+                            ChickenEntity chickenEntity = (ChickenEntity) list.get(0);
                             chickenEntity.setHasJockey(true);
                             this.startRiding(chickenEntity);
                         }
-                    } else if ((double)world.getRandom().nextFloat() < 0.05D) {
-                        ChickenEntity chickenEntity2 = (ChickenEntity)EntityType.CHICKEN.create(this.world);
+                    } else if ((double) world.getRandom().nextFloat() < 0.05D) {
+                        ChickenEntity chickenEntity2 = (ChickenEntity) EntityType.CHICKEN.create(this.world);
                         chickenEntity2.refreshPositionAndAngles(this.getX(), this.getY(), this.getZ(), this.getYaw(), 0.0F);
-                        chickenEntity2.initialize(world, difficulty, SpawnReason.JOCKEY, (EntityData)null, (NbtCompound)null);
+                        chickenEntity2.initialize(world, difficulty, SpawnReason.JOCKEY, (EntityData) null, (NbtCompound) null);
                         chickenEntity2.setHasJockey(true);
                         this.startRiding(chickenEntity2);
                         world.spawnEntity(chickenEntity2);
@@ -433,7 +435,7 @@ public class MotherCreeperEntity extends ZombieEntity implements IAnimatable {
         }
 
         this.applyAttributeModifiers(f);
-        return (EntityData)entityData;
+        return (EntityData) entityData;
     }
 
     public static boolean shouldBeBaby(Random random) {
@@ -443,7 +445,7 @@ public class MotherCreeperEntity extends ZombieEntity implements IAnimatable {
     protected void applyAttributeModifiers(float chanceMultiplier) {
         this.initAttributes();
         this.getAttributeInstance(EntityAttributes.GENERIC_KNOCKBACK_RESISTANCE).addPersistentModifier(new EntityAttributeModifier("Random spawn bonus", this.random.nextDouble() * 0.05000000074505806D, EntityAttributeModifier.Operation.ADDITION));
-        double d = this.random.nextDouble() * 1.5D * (double)chanceMultiplier;
+        double d = this.random.nextDouble() * 1.5D * (double) chanceMultiplier;
         if (d > 1.0D) {
             this.getAttributeInstance(EntityAttributes.GENERIC_FOLLOW_RANGE).addPersistentModifier(new EntityAttributeModifier("Random zombie-spawn bonus", d, EntityAttributeModifier.Operation.MULTIPLY_TOTAL));
         }
@@ -468,7 +470,7 @@ public class MotherCreeperEntity extends ZombieEntity implements IAnimatable {
         super.dropEquipment(source, lootingMultiplier, allowDrops);
         Entity entity = source.getAttacker();
         if (entity instanceof CreeperEntity) {
-            CreeperEntity creeperEntity = (CreeperEntity)entity;
+            CreeperEntity creeperEntity = (CreeperEntity) entity;
             if (creeperEntity.shouldDropHead()) {
                 ItemStack itemStack = this.getSkull();
                 if (!itemStack.isEmpty()) {
@@ -496,39 +498,49 @@ public class MotherCreeperEntity extends ZombieEntity implements IAnimatable {
 
     @Override
     public void registerControllers(AnimationData animationData) {
-
+        animationData.addAnimationController(new AnimationController(this, "controller",
+                0, this::predicate));
     }
 
     @Override
     public AnimationFactory getFactory() {
-        return null;
+        return factory;
     }
 
     class DestroyEggGoal extends StepAndDestroyBlockGoal {
-        DestroyEggGoal(PathAwareEntity mob, double speed, int maxYDifference) {
-            super(Blocks.TURTLE_EGG, mob, speed, maxYDifference);
+            DestroyEggGoal(PathAwareEntity mob, double speed, int maxYDifference) {
+                super(Blocks.TURTLE_EGG, mob, speed, maxYDifference);
+            }
+
+            public void tickStepping(WorldAccess world, BlockPos pos) {
+                world.playSound((PlayerEntity) null, pos, SoundEvents.ENTITY_ZOMBIE_DESTROY_EGG, SoundCategory.HOSTILE, 0.5F, 0.9F + MotherCreeperEntity.this.random.nextFloat() * 0.2F);
+            }
+
+            public void onDestroyBlock(World world, BlockPos pos) {
+                world.playSound((PlayerEntity) null, pos, SoundEvents.ENTITY_TURTLE_EGG_BREAK, SoundCategory.BLOCKS, 0.7F, 0.9F + world.random.nextFloat() * 0.2F);
+            }
+
+            public double getDesiredDistanceToTarget() {
+                return 1.14D;
+            }
         }
 
-        public void tickStepping(WorldAccess world, BlockPos pos) {
-            world.playSound((PlayerEntity)null, pos, SoundEvents.ENTITY_ZOMBIE_DESTROY_EGG, SoundCategory.HOSTILE, 0.5F, 0.9F + MotherCreeperEntity.this.random.nextFloat() * 0.2F);
-        }
+        public static class ZombieData implements EntityData {
+            public final boolean baby;
+            public final boolean tryChickenJockey;
 
-        public void onDestroyBlock(World world, BlockPos pos) {
-            world.playSound((PlayerEntity)null, pos, SoundEvents.ENTITY_TURTLE_EGG_BREAK, SoundCategory.BLOCKS, 0.7F, 0.9F + world.random.nextFloat() * 0.2F);
+            public ZombieData(boolean baby, boolean tryChickenJockey) {
+                this.baby = baby;
+                this.tryChickenJockey = tryChickenJockey;
+            }
         }
-
-        public double getDesiredDistanceToTarget() {
-            return 1.14D;
+    private <E extends IAnimatable> PlayState predicate(AnimationEvent<E> event) {
+        if (event.isMoving()) {
+            event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.mothercreeper.walk", true));
+            return PlayState.CONTINUE;
         }
+        event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.mothercreeper.idle", true));
+        return PlayState.CONTINUE;
     }
 
-    public static class ZombieData implements EntityData {
-        public final boolean baby;
-        public final boolean tryChickenJockey;
-
-        public ZombieData(boolean baby, boolean tryChickenJockey) {
-            this.baby = baby;
-            this.tryChickenJockey = tryChickenJockey;
-        }
-    }
 }
